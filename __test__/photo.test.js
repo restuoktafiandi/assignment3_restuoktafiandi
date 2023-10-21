@@ -11,8 +11,8 @@ describe("Testing Endpoint Photo", () => {
   beforeAll(async () => {
     try {
       const user = await User.create({
-        username: "akmal",
-        email: "akmal@gmail.com",
+        username: "restu",
+        email: "restu@gmail.com",
         password: "12345678",
       })
 
@@ -23,9 +23,9 @@ describe("Testing Endpoint Photo", () => {
       })
 
       const photo = await Photo.create({
-        title: "bebas",
-        caption: "bebas",
-        image_url: "bebas",
+        title: "test",
+        caption: "test",
+        image_url: "test",
         UserId: user.id,
       })
       id = photo.id
@@ -55,9 +55,9 @@ describe("Testing Endpoint Photo", () => {
       .post("/photos")
       .set("token", token)
       .send({
-        title: "bebas",
-        caption: "bebas",
-        image_url: "bebas",
+        title: "test",
+        caption: "test",
+        image_url: "test",
         UserId: userId,
       })
       .expect(201)
@@ -141,7 +141,7 @@ describe("Testing Endpoint Photo", () => {
   // Respon error data not found
   it("Response should 404", (done) => {
     request(app)
-      .get("/photos/" + 10)
+      .get("/photos/" + 12)
       .set("token", token)
       .expect(404)
       .end((err, res) => {
